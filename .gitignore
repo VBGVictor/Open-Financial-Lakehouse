@@ -5,6 +5,7 @@ etc/unitycatalog/
 # Python
 __pycache__/
 .venv/
+.venv_linux/
 *.pyc
 
 # dbt
