@@ -1,0 +1,13 @@
+# Dados locais
+data/
+etc/unitycatalog/
+
+# Python
+__pycache__/
+.venv/
+*.pyc
+
+# dbt
+dbt_packages/
+target/
+profiles.yml

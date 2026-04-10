@@ -1,0 +1,63 @@
+[0m10:20:10.458550 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x71fbef0c2a50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x71fbeeffb7d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x71fbf0fea480>]}
+
+
+============================== 10:20:10.462431 | eb635752-2d4f-4d45-b6b6-78edbdeb954b ==============================
+[0m10:20:10.462431 [info ] [MainThread]: Running with dbt=1.11.7
+[0m10:20:10.462908 [debug] [MainThread]: running dbt with arguments {'cache_selected_only': 'False', 'send_anonymous_usage_stats': 'True', 'log_format': 'default', 'invocation_command': 'dbt init analytics', 'debug': 'False', 'empty': 'None', 'introspect': 'True', 'no_print': 'None', 'partial_parse': 'True', 'quiet': 'False', 'log_cache_events': 'False', 'indirect_selection': 'eager', 'fail_fast': 'False', 'log_path': 'logs', 'static_parser': 'True', 'printer_width': '80', 'write_json': 'True', 'use_colors': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'profiles_dir': '/home/victor_goveia/.dbt', 'version_check': 'True', 'warn_error': 'None', 'use_experimental_parser': 'False'}
+[0m10:20:10.479316 [debug] [MainThread]: Starter project path: /home/victor_goveia/projects/open_financial_lakehouse/.venv_linux/lib/python3.12/site-packages/dbt/include/starter_project
+[0m10:20:10.484892 [info ] [MainThread]: 
+Your new dbt project "analytics" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m10:20:10.485278 [info ] [MainThread]: Setting up your profile.
+[0m10:21:02.525876 [debug] [MainThread]: Spark adapter: Setting pyhive.hive logging to ERROR
+[0m10:21:02.526269 [debug] [MainThread]: Spark adapter: Setting thrift.transport logging to ERROR
+[0m10:21:02.526625 [debug] [MainThread]: Spark adapter: Setting thrift.protocol logging to ERROR
+[0m10:22:24.931342 [error] [MainThread]: Encountered an error:
+
+[0m10:22:24.937466 [error] [MainThread]: Traceback (most recent call last):
+  File "/home/victor_goveia/projects/open_financial_lakehouse/.venv_linux/lib/python3.12/site-packages/dbt/cli/requires.py", line 182, in wrapper
+    result, success = func(*args, **kwargs)
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/victor_goveia/projects/open_financial_lakehouse/.venv_linux/lib/python3.12/site-packages/dbt/cli/requires.py", line 128, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/victor_goveia/projects/open_financial_lakehouse/.venv_linux/lib/python3.12/site-packages/dbt/cli/main.py", line 483, in init
+    results = task.run()
+              ^^^^^^^^^^
+  File "/home/victor_goveia/projects/open_financial_lakehouse/.venv_linux/lib/python3.12/site-packages/dbt/task/init.py", line 346, in run
+    self.setup_profile(profile_name)
+  File "/home/victor_goveia/projects/open_financial_lakehouse/.venv_linux/lib/python3.12/site-packages/dbt/task/init.py", line 262, in setup_profile
+    self.create_profile_from_target(adapter, profile_name=profile_name)
+  File "/home/victor_goveia/projects/open_financial_lakehouse/.venv_linux/lib/python3.12/site-packages/dbt/task/init.py", line 179, in create_profile_from_target
+    self.create_profile_from_profile_template(profile_template, profile_name)
+  File "/home/victor_goveia/projects/open_financial_lakehouse/.venv_linux/lib/python3.12/site-packages/dbt/task/init.py", line 163, in create_profile_from_profile_template
+    target = self.generate_target_from_input(prompts, initial_target)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/victor_goveia/projects/open_financial_lakehouse/.venv_linux/lib/python3.12/site-packages/dbt/task/init.py", line 129, in generate_target_from_input
+    target[key] = click.prompt(
+                  ^^^^^^^^^^^^^
+  File "/home/victor_goveia/projects/open_financial_lakehouse/.venv_linux/lib/python3.12/site-packages/click/termui.py", line 171, in prompt
+    value = prompt_func(prompt)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/home/victor_goveia/projects/open_financial_lakehouse/.venv_linux/lib/python3.12/site-packages/click/termui.py", line 154, in prompt_func
+    raise Abort() from None
+click.exceptions.Abort
+
+[0m10:22:24.947101 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": false, "command_wall_clock_time": 134.4626, "process_in_blocks": "59912", "process_kernel_time": 0.2059, "process_mem_max_rss": "105296", "process_out_blocks": "88", "process_user_time": 1.259629}
+[0m10:22:24.947977 [debug] [MainThread]: Command `dbt init` failed at 10:22:24.947784 after 134.46 seconds
+[0m10:22:24.948617 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x71fbeedf81a0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x71fbee000500>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x71fbee0303e0>]}
+[0m10:22:24.949059 [debug] [MainThread]: Flushing usage events
+[0m10:22:25.689970 [debug] [MainThread]: An error was encountered while trying to flush usage events

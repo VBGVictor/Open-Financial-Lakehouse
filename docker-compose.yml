@@ -1,0 +1,16 @@
+services:
+  unity-catalog:
+    # Vamos usar a tag 'latest' ou '0.2.0' se a 0.4.0 ainda não subiu no Hub
+    # Mas tente primeiro a 'latest' que puxa a mais recente disponível
+    image: unitycatalog/unitycatalog:latest
+    container_name: unity_catalog_server
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./etc/unitycatalog:/etc/unitycatalog
+    networks:
+      - lakehouse-net
+
+networks:
+  lakehouse-net:
+    driver: bridge

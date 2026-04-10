@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: external_data
+    schema: bronze
+    tables:
+      - name: ivvb11
+        # Aqui dizemos ao dbt o caminho físico do dado no seu Linux
+        external_location: "/home/victor_goveia/lakehouse_data/bronze/ivvb11"

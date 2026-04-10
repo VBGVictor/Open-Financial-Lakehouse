@@ -1,0 +1,56 @@
+version: 2
+
+models:
+  - name: stg_ivvb11
+    description: "Tabela staging do IVVB11 com limpeza e tipagem garantida a partir da camada Bronze."
+    config:
+      # Mantemos o contrato definido, mas sem forçar a trava de nullable no Spark local
+      contract:
+        enforced: false
+    columns:
+      - name: data_referencia
+        description: "Data do pregão convertida para o tipo DATE."
+        data_type: date
+        tests:
+          - not_null
+
+      - name: preco_abertura
+        description: "Preço de abertura do ativo."
+        data_type: double
+
+      - name: preco_maximo
+        description: "Preço máximo atingido no dia."
+        data_type: double
+
+      - name: preco_minimo
+        description: "Preço mínimo atingido no dia."
+        data_type: double
+
+      - name: preco_fechamento
+        description: "Preço de fechamento ajustado."
+        data_type: double
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: 0.01
+
+      - name: volume_negociado
+        description: "Volume total de negociações no dia."
+        data_type: bigint
+
+  - name: fct_performance_ivvb11
+    description: "Tabela Gold com indicadores de performance, variações e médias móveis."
+    columns:
+      - name: data_referencia
+        data_type: date
+        tests:
+          - not_null
+          - unique # Garante que não temos duplicidade de datas na Gold
+
+      - name: variacao_diaria_pct
+        description: "Variação percentual calculada em relação ao fechamento anterior."
+        data_type: double
+
+      - name: media_movel_5d
+        description: "Média móvel aritmética dos últimos 5 dias."
+        data_type: double
