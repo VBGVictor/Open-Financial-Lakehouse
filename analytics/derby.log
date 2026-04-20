@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-Fri Apr 10 09:19:27 BRT 2026:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.16.1.1 - (1901046): instance a816c00e-019d-7755-3922-00000501d800 
+Mon Apr 20 10:53:24 BRT 2026:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.16.1.1 - (1901046): instance a816c00e-019d-ab2a-d542-000003825400 
 on database directory /home/victor_goveia/projects/open_financial_lakehouse/analytics/metastore_db with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@1dbd16a6 
 Loaded from file:/home/victor_goveia/projects/open_financial_lakehouse/.venv_linux/lib/python3.12/site-packages/pyspark/jars/derby-10.16.1.1.jar
 java.vendor=Ubuntu

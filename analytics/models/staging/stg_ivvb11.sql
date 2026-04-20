@@ -1,0 +1,1 @@
+{{ generate_staging_query('IVVB11') }}

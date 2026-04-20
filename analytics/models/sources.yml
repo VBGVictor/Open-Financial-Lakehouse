@@ -1,9 +1,9 @@
 version: 2
 
 sources:
-  - name: external_data
-    schema: bronze
+  - name: bronze
+    # Deixamos o schema vazio ou removemos para o dbt não tentar prefixar nada
     tables:
-      - name: ivvb11
-        # Aqui dizemos ao dbt o caminho físico do dado no seu Linux
-        external_location: "/home/victor_goveia/lakehouse_data/bronze/ivvb11"
+      - name: stock_prices
+        # O segredo: Não use aspas simples por fora, use apenas as crases do Spark
+        identifier: delta.`/home/victor_goveia/projects/open_financial_lakehouse/data/bronze/stock_prices`
