@@ -1,7 +1,23 @@
+import os
+from pathlib import Path
 from pyspark.sql import SparkSession
 from delta import *
-import os
+from pyspark.sql.functions import input_file_name, regexp_extract
 
+# --- 1. CONFIGURAÇÃO DINÂMICA DE CAMINHOS ---
+script_path = Path(__file__).resolve()
+project_root = script_path.parent.parent
+
+# Caminhos relativos à raiz do projeto
+csv_path = os.path.join(project_root, "data/bronze/stock_prices/*/*.csv")
+delta_path = os.path.join(project_root, "lakehouse_data/bronze/main_stock_prices")
+
+print(f"🚀 Iniciando processamento genérico...")
+print(f"📂 Raiz do projeto detectada: {project_root}")
+print(f"🔍 Buscando CSVs em: {csv_path}")
+
+# --- 2. INICIALIZAÇÃO DO SPARK ---
+# Aqui ligamos o motor do Lakehouse
 builder = SparkSession.builder.appName("BronzeToDelta") \
     .config("spark.sql.extensions", "io.delta.sql.DeltaSparkSessionExtension") \
     .config("spark.sql.catalog.spark_catalog", "org.apache.spark.sql.delta.catalog.DeltaCatalog") \
@@ -9,29 +25,23 @@ builder = SparkSession.builder.appName("BronzeToDelta") \
 
 spark = configure_spark_with_delta_pip(builder).getOrCreate()
 
-def convert_csv_to_delta():
-    # Onde os CSVs estão (No Windows)
-    csv_path = "/mnt/c/Users/Victor Goveia/Downloads/Pessoal/Projetos/Open Financial Lakehouse/data/bronze/stock_prices"
-    
-    # Onde vamos salvar (No Linux - SEM ERRO DE PERMISSÃO)
-    delta_path = "/home/victor_goveia/lakehouse_data/bronze/delta_tables"
+# --- 3. PROCESSAMENTO DOS DADOS ---
+try:
+    print("📦 Lendo arquivos CSV...")
+    df_raw = spark.read.csv(f"file://{csv_path}", header=True, inferSchema=True)
 
-    if not os.path.exists(delta_path):
-        os.makedirs(delta_path)
+    print("🏷️ Extraindo o ticker do caminho do arquivo...")
+    # Agora o Spark saberá o que é regexp_extract e input_file_name
+    df_with_ticker = df_raw.withColumn("ticker", regexp_extract(input_file_name(), r"stock_prices/([^/]+)/", 1))
 
-    files = [f for f in os.listdir(csv_path) if f.endswith('.csv')]
+    print("🔄 Consolidando ativos e gravando em formato Delta...")
+    df_with_ticker.write.format("delta") \
+      .mode("overwrite") \
+      .partitionBy("ticker") \
+      .save(f"file://{delta_path}")
 
-    for file in files:
-        ticker = file.split('_')[0]
-        print(f"📦 Processando {ticker}...")
-        
-        # Lê do Windows
-        df = spark.read.csv(f"{csv_path}/{file}", header=True, inferSchema=True)
-        
-        # Grava no Linux (Ext4)
-        df.write.format("delta").mode("overwrite").save(f"{delta_path}/{ticker}")
+    print(f"✅ Sucesso! Tabela única gravada em: {delta_path}")
+    df_with_ticker.groupBy("ticker").count().show()
 
-    print(f"✅ Sucesso! Dados gravados em: {delta_path}")
-
-if __name__ == "__main__":
-    convert_csv_to_delta()
+except Exception as e:
+    print(f"❌ Erro durante o processamento: {e}")

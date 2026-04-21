@@ -1,7 +1,7 @@
 # Open Financial Lakehouse
 
 ## Objetivo do Projeto
-Este projeto implementa uma plataforma de dados moderna (Modern Data Stack) para transformar dados brutos do mercado financeiro em inteligência de decisão. O foco principal é a governança, auditabilidade e a construção de um pipeline fim-a-fim que alimenta um motor de decisão quantitativo.
+Este projeto implementa uma plataforma de dados moderna (Modern Data Stack) para transformar dados brutos do mercado financeiro em inteligência de decisão com inserção automatizada de dados. O foco principal é a governança, auditabilidade e a construção de um pipeline fim-a-fim que alimenta um motor de decisão quantitativo.
 
 ## Tecnologias Utilizadas
 - Processamento: Apache Spark 4.1 (WSL2/Ubuntu)

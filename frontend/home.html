@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Financial - Portfolio Analysis</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="home.css"> 
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">OPEN <span>FINANCIAL</span></div>
+        <div class="nav-links">
+            <a href="home.html" class="active">Home</a>
+            <a href="index.html">Terminal</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>Sua Inteligência Quantitativa no <span>Lakehouse</span></h1>
+        <p>Analise ativos com precisão institucional usando arquitetura de dados moderna.</p>
+    </header>
+
+    <div class="ingestion-form">
+        <input type="text" id="new-ticker" placeholder="EX: WEGE3.SA">
+        <button onclick="requestIngestion()" class="btn-alt">Baixar Ativo</button>
+    </div>
+
+    <div id="custom-alert" class="hidden">
+        <span id="alert-message"></span>
+        <button onclick="closeAlert()">X</button>
+    </div>
+
+    <main class="container">
+        <section class="tools-grid">
+            <div class="tool-card">
+                <h3>Terminal Técnico</h3>
+                <p>Acesse gráficos com RSI e Bandas de Bollinger processados via dbt.</p>
+                <a href="index.html" class="btn">Abrir Terminal</a>
+            </div>
+            <div class="tool-card">
+                <h3>Novo Ativo</h3>
+                <p>Adicione tickers da B3 (ex: WEGE3) para processar no Lakehouse.</p>
+                <div class="ingestion-form-inner">
+                    <input type="text" id="new-ticker-alt" placeholder="TICKER.SA">
+                    <button onclick="requestIngestionAlt()" class="btn-alt">Baixar</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="asset-selection">
+            <h2>Seus Ativos Disponíveis</h2>
+            <div id="asset-grid" class="asset-grid">
+                </div>
+        </section>
+    </main>
+
+    <script src="home.js"></script>
+</body>
+</html>

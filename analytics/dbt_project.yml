@@ -29,25 +29,24 @@ clean-targets:         # directories to be removed by `dbt clean`
 # In this example config, we tell dbt to build all models in the example/
 # directory as views. These settings can be overridden in the individual model
 # files using the `{{ config(...) }}` macro.
-# ... (mantenha o topo do arquivo igual)
+
+vars:
+  # Este caminho é relativo à raiz do projeto. 
+  # Funciona em qualquer PC pois não usa "C:/" ou "/home/user/"
+  bronze_path: "lakehouse_data/bronze/main_stock_prices"
 
 models:
   analytics:
-    # Configurações globais para todos os modelos do projeto
     +materialized: view
-
-    # Regra específica para a pasta staging (Opção B)
-    # Isso remove o prefixo "default." que causa o erro de namespace
-    staging:
-      +schema: ""
-      +materialized: view
-
-    # Configurações para as outras camadas (opcional, mas recomendado)
+    # Camada Silver
     silver:
       +schema: silver
-      +materialized: table # Silver e Gold costumam ser tabelas para performance
-
+      +materialized: table
+    # Camada Gold
     gold:
       +schema: gold
       +materialized: table
+      +file_format: delta
+      # Forçamos o local para a API sempre achar
+      +location: "lakehouse_data/gold/fct_stock_performance"
 

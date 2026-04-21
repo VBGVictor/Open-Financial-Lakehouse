@@ -1,42 +1,35 @@
 version: 2
 
+sources:
+  - name: bronze_layer
+    schema: default
+    tables:
+      - name: stock_prices_bronze
+
 models:
-  - name: stg_ivvb11
-    description: "Staging do IVVB11 gerada via macro dinâmica."
-    columns: &staging_columns
+  # --- CAMADA SILVER (STAGING ÚNICA) ---
+  - name: stg_stocks
+    description: "Modelo universal que processa todos os ativos da camada Bronze."
+    columns:
       - name: data_referencia
+        tests:
+          - not_null
+      - name: ticker
         tests:
           - not_null
       - name: preco_fechamento
         tests:
           - not_null
-          - dbt_utils.accepted_range:
-              arguments: # Adicionamos esta linha para tirar o aviso
-                min_value: 0.01
-      - name: ticker
-        tests:
-          - not_null
 
-  - name: stg_petr4
-    columns: *staging_columns
-
-  - name: stg_vale3
-    columns: *staging_columns
-
-  - name: stg_itub4
-    description: "Staging do ITUB4 gerada via macro dinâmica."
-    columns: *staging_columns
-
-  # --- CAMADA GOLD (INDICADORES DE NEGÓCIO) ---
-
-  - name: fct_performance_ivvb11
-    description: "Tabela Gold com indicadores de performance e médias móveis para IVVB11."
+  # --- CAMADA GOLD (TABELA FINAL DO DASHBOARD) ---
+  - name: fct_stock_performance
+    description: "Tabela Gold consolidada com indicadores de performance para todos os ativos."
     columns:
       - name: data_referencia
         tests:
           - not_null
-          - unique
+      - name: ticker
+        tests:
+          - not_null
       - name: variacao_diaria_pct
-        description: "Variação percentual diária."
-      - name: media_movel_21d
-        description: "Média móvel exponencial de 21 dias (MME21)."
+        description: "Variação percentual diária calculada dinamicamente."

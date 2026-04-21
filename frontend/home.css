@@ -1,0 +1,47 @@
+.hero {
+    text-align: center;
+    padding: 4rem 1rem;
+    background: radial-gradient(circle at center, #1e2329 0%, #0b0e11 100%);
+}
+
+.hero h1 span { color: var(--accent-color); }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+
+.tools-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.tool-card {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid #333;
+    transition: 0.3s;
+}
+
+.tool-card:hover { border-color: var(--accent-color); }
+
+.ingestion-form { display: flex; gap: 10px; margin-top: 1rem; }
+
+input[type="text"] {
+    background: #0b0e11;
+    border: 1px solid #333;
+    color: white;
+    padding: 10px;
+    border-radius: 4px;
+    flex: 1;
+}
+
+.asset-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.btn { background: var(--accent-color); color: black; padding: 12px 24px; border-radius: 4px; text-decoration: none; display: inline-block; font-weight: bold; }
+.btn-alt { background: #333; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; }

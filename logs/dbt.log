@@ -61,3 +61,163 @@ click.exceptions.Abort
 [0m10:22:24.948617 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x71fbeedf81a0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x71fbee000500>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x71fbee0303e0>]}
 [0m10:22:24.949059 [debug] [MainThread]: Flushing usage events
 [0m10:22:25.689970 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m07:53:31.625522 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7921e4437470>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7921e4186c60>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7921e6a5af00>]}
+
+
+============================== 07:53:31.630949 | f675cd58-7a14-4a05-bc9d-ec337852f849 ==============================
+[0m07:53:31.630949 [info ] [MainThread]: Running with dbt=1.11.7
+[0m07:53:31.631570 [debug] [MainThread]: running dbt with arguments {'target_path': 'None', 'quiet': 'False', 'introspect': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'log_format': 'default', 'partial_parse': 'True', 'empty': 'False', 'use_colors': 'True', 'debug': 'False', 'version_check': 'True', 'indirect_selection': 'eager', 'send_anonymous_usage_stats': 'True', 'log_cache_events': 'False', 'profiles_dir': '/home/victor_goveia/.dbt', 'warn_error': 'None', 'log_path': 'logs', 'use_experimental_parser': 'False', 'no_print': 'None', 'static_parser': 'True', 'invocation_command': 'dbt run --select stg_ivvb11', 'write_json': 'True', 'printer_width': '80', 'fail_fast': 'False', 'cache_selected_only': 'False'}
+[0m07:53:31.631969 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path /home/victor_goveia/projects/open_financial_lakehouse/dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m07:53:31.633729 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 0.056970775, "process_in_blocks": "75208", "process_kernel_time": 0.24562, "process_mem_max_rss": "102208", "process_out_blocks": "8", "process_user_time": 1.124027}
+[0m07:53:31.634195 [debug] [MainThread]: Command `dbt run` failed at 07:53:31.634076 after 0.06 seconds
+[0m07:53:31.634504 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7921e4e17950>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7921e3c93380>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7921e3c92690>]}
+[0m07:53:31.634839 [debug] [MainThread]: Flushing usage events
+[0m07:53:32.292493 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m15:14:29.139117 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x721193d63740>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x721194092600>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x72119371cf50>]}
+
+
+============================== 15:14:29.143724 | fefb7e67-8423-4720-9237-534cff9778d5 ==============================
+[0m15:14:29.143724 [info ] [MainThread]: Running with dbt=1.11.7
+[0m15:14:29.144226 [debug] [MainThread]: running dbt with arguments {'introspect': 'True', 'log_format': 'default', 'log_cache_events': 'False', 'cache_selected_only': 'False', 'invocation_command': 'dbt run', 'send_anonymous_usage_stats': 'True', 'use_experimental_parser': 'False', 'target_path': 'None', 'printer_width': '80', 'static_parser': 'True', 'warn_error': 'None', 'indirect_selection': 'eager', 'partial_parse': 'True', 'quiet': 'False', 'version_check': 'True', 'profiles_dir': '/home/victor_goveia/.dbt', 'write_json': 'True', 'debug': 'False', 'no_print': 'None', 'empty': 'False', 'use_colors': 'True', 'fail_fast': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'log_path': 'logs'}
+[0m15:14:29.144628 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path /home/victor_goveia/projects/open_financial_lakehouse/dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m15:14:29.146465 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 0.05391325, "process_in_blocks": "34440", "process_kernel_time": 0.157545, "process_mem_max_rss": "102360", "process_out_blocks": "16", "process_user_time": 1.169154}
+[0m15:14:29.146922 [debug] [MainThread]: Command `dbt run` failed at 15:14:29.146840 after 0.05 seconds
+[0m15:14:29.147216 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x721193601850>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x721193d63740>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x721193afc2c0>]}
+[0m15:14:29.147532 [debug] [MainThread]: Flushing usage events
+[0m15:14:29.849924 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m15:14:49.202761 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7c7b36c89970>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7c7b36808fe0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7c7b36b709b0>]}
+
+
+============================== 15:14:49.205328 | 3d120907-81ff-4154-aacf-cbd615da00df ==============================
+[0m15:14:49.205328 [info ] [MainThread]: Running with dbt=1.11.7
+[0m15:14:49.205788 [debug] [MainThread]: running dbt with arguments {'no_print': 'None', 'use_experimental_parser': 'False', 'version_check': 'True', 'quiet': 'False', 'invocation_command': 'dbt run', 'empty': 'False', 'log_format': 'default', 'profiles_dir': '/home/victor_goveia/.dbt', 'warn_error': 'None', 'static_parser': 'True', 'target_path': 'None', 'cache_selected_only': 'False', 'send_anonymous_usage_stats': 'True', 'fail_fast': 'False', 'partial_parse': 'True', 'use_colors': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'debug': 'False', 'introspect': 'True', 'log_cache_events': 'False', 'indirect_selection': 'eager', 'write_json': 'True', 'printer_width': '80', 'log_path': 'logs'}
+[0m15:14:49.206307 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path /home/victor_goveia/projects/open_financial_lakehouse/dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m15:14:49.207069 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 0.053919435, "process_in_blocks": "0", "process_kernel_time": 0.099796, "process_mem_max_rss": "102472", "process_out_blocks": "16", "process_user_time": 1.076966}
+[0m15:14:49.207565 [debug] [MainThread]: Command `dbt run` failed at 15:14:49.207470 after 0.05 seconds
+[0m15:14:49.207948 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7c7b3abb73b0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7c7b38ac7020>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7c7b367a3d40>]}
+[0m15:14:49.208259 [debug] [MainThread]: Flushing usage events
+[0m15:14:49.913409 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m15:17:57.432369 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x736f7b279e80>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x736f7b707980>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x736f7b707680>]}
+
+
+============================== 15:17:57.436140 | 6605965d-c586-47eb-bc05-9f092df24aff ==============================
+[0m15:17:57.436140 [info ] [MainThread]: Running with dbt=1.11.7
+[0m15:17:57.436561 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'fail_fast': 'False', 'warn_error': 'None', 'profiles_dir': '/home/victor_goveia/.dbt', 'log_path': 'logs', 'version_check': 'True', 'invocation_command': 'dbt run', 'use_colors': 'True', 'target_path': 'None', 'empty': 'False', 'write_json': 'True', 'no_print': 'None', 'log_format': 'default', 'cache_selected_only': 'False', 'quiet': 'False', 'indirect_selection': 'eager', 'debug': 'False', 'partial_parse': 'True', 'introspect': 'True', 'printer_width': '80', 'log_cache_events': 'False', 'send_anonymous_usage_stats': 'True', 'use_experimental_parser': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])'}
+[0m15:17:57.436895 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path /home/victor_goveia/projects/open_financial_lakehouse/dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m15:17:57.438673 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 0.05139225, "process_in_blocks": "34168", "process_kernel_time": 0.193664, "process_mem_max_rss": "102256", "process_out_blocks": "8", "process_user_time": 1.091565}
+[0m15:17:57.439099 [debug] [MainThread]: Command `dbt run` failed at 15:17:57.439022 after 0.05 seconds
+[0m15:17:57.439379 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x736f7b279e80>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x736f7a90a870>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x736f7b707980>]}
+[0m15:17:57.439677 [debug] [MainThread]: Flushing usage events
+[0m15:17:58.243362 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m15:19:55.594858 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77a156b8acf0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77a159206d20>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77a157307a40>]}
+
+
+============================== 15:19:55.600324 | 24196a7f-8680-44e1-a434-e757bc7251da ==============================
+[0m15:19:55.600324 [info ] [MainThread]: Running with dbt=1.11.7
+[0m15:19:55.600962 [debug] [MainThread]: running dbt with arguments {'debug': 'False', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'cache_selected_only': 'False', 'log_format': 'default', 'printer_width': '80', 'target_path': 'None', 'invocation_command': 'dbt run', 'quiet': 'False', 'warn_error': 'None', 'fail_fast': 'False', 'write_json': 'True', 'use_colors': 'True', 'profiles_dir': '/home/victor_goveia/.dbt', 'empty': 'False', 'indirect_selection': 'eager', 'use_experimental_parser': 'False', 'log_path': 'logs', 'version_check': 'True', 'static_parser': 'True', 'log_cache_events': 'False', 'introspect': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'no_print': 'None'}
+[0m15:19:55.601473 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path /home/victor_goveia/projects/open_financial_lakehouse/dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m15:19:55.602961 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 0.056248486, "process_in_blocks": "34440", "process_kernel_time": 0.204152, "process_mem_max_rss": "102372", "process_out_blocks": "16", "process_user_time": 1.105504}
+[0m15:19:55.603333 [debug] [MainThread]: Command `dbt run` failed at 15:19:55.603252 after 0.06 seconds
+[0m15:19:55.603620 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77a15a95f3b0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77a159206d20>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77a15646c7a0>]}
+[0m15:19:55.603923 [debug] [MainThread]: Flushing usage events
+[0m15:19:56.299431 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m15:28:48.028975 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x721b51986570>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x721b53f06f30>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x721b515096d0>]}
+
+
+============================== 15:28:48.034617 | 2726b00d-11b3-4271-82b5-795ee7f368fa ==============================
+[0m15:28:48.034617 [info ] [MainThread]: Running with dbt=1.11.7
+[0m15:28:48.035074 [debug] [MainThread]: running dbt with arguments {'write_json': 'True', 'use_experimental_parser': 'False', 'invocation_command': 'dbt clean', 'log_path': 'logs', 'send_anonymous_usage_stats': 'True', 'indirect_selection': 'eager', 'quiet': 'False', 'partial_parse': 'True', 'printer_width': '80', 'log_cache_events': 'False', 'introspect': 'True', 'warn_error': 'None', 'use_colors': 'True', 'log_format': 'default', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'debug': 'False', 'static_parser': 'True', 'target_path': 'None', 'profiles_dir': '/home/victor_goveia/.dbt', 'cache_selected_only': 'False', 'empty': 'None', 'no_print': 'None', 'fail_fast': 'False', 'version_check': 'True'}
+[0m15:28:48.035547 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path /home/victor_goveia/projects/open_financial_lakehouse/dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m15:28:48.037064 [debug] [MainThread]: Resource report: {"command_name": "clean", "command_success": false, "command_wall_clock_time": 0.05485117, "process_in_blocks": "55408", "process_kernel_time": 0.214461, "process_mem_max_rss": "102076", "process_out_blocks": "8", "process_user_time": 1.158914}
+[0m15:28:48.037568 [debug] [MainThread]: Command `dbt clean` failed at 15:28:48.037456 after 0.06 seconds
+[0m15:28:48.037910 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x721b510deff0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x721b5187f770>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x721b51f725d0>]}
+[0m15:28:48.038269 [debug] [MainThread]: Flushing usage events
+[0m15:28:48.728288 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m15:31:30.223485 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x725006189b50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x72500880a870>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x72500618b8c0>]}
+
+
+============================== 15:31:30.226193 | 866c30ae-a0f4-4eb7-a7a0-c9fa59ed91fa ==============================
+[0m15:31:30.226193 [info ] [MainThread]: Running with dbt=1.11.7
+[0m15:31:30.226771 [debug] [MainThread]: running dbt with arguments {'use_colors': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'use_experimental_parser': 'False', 'printer_width': '80', 'empty': 'False', 'static_parser': 'True', 'partial_parse': 'True', 'invocation_command': 'dbt run', 'send_anonymous_usage_stats': 'True', 'cache_selected_only': 'False', 'log_format': 'default', 'log_cache_events': 'False', 'introspect': 'True', 'write_json': 'True', 'profiles_dir': '/home/victor_goveia/.dbt', 'quiet': 'False', 'warn_error': 'None', 'indirect_selection': 'eager', 'log_path': 'logs', 'version_check': 'True', 'debug': 'False', 'no_print': 'None', 'target_path': 'None', 'fail_fast': 'False'}
+[0m15:31:30.227180 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path /home/victor_goveia/projects/open_financial_lakehouse/dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m15:31:30.227870 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 0.0508467, "process_in_blocks": "0", "process_kernel_time": 0.125446, "process_mem_max_rss": "102496", "process_out_blocks": "8", "process_user_time": 1.120651}
+[0m15:31:30.228249 [debug] [MainThread]: Command `dbt run` failed at 15:31:30.228140 after 0.05 seconds
+[0m15:31:30.228537 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7250065388f0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x725006907980>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x725006907a70>]}
+[0m15:31:30.228863 [debug] [MainThread]: Flushing usage events
+[0m15:31:30.932502 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m15:31:40.084772 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7544bccb73b0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7544bec3ecf0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7544bc21d2b0>]}
+
+
+============================== 15:31:40.087066 | 540119ec-7b8a-4fe1-9ece-5b36fc455ccc ==============================
+[0m15:31:40.087066 [info ] [MainThread]: Running with dbt=1.11.7
+[0m15:31:40.087553 [debug] [MainThread]: running dbt with arguments {'use_colors': 'True', 'indirect_selection': 'eager', 'target_path': 'None', 'log_path': 'logs', 'quiet': 'False', 'profiles_dir': '/home/victor_goveia/.dbt', 'send_anonymous_usage_stats': 'True', 'cache_selected_only': 'False', 'partial_parse': 'True', 'no_print': 'None', 'static_parser': 'True', 'introspect': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'log_cache_events': 'False', 'log_format': 'default', 'use_experimental_parser': 'False', 'fail_fast': 'False', 'debug': 'False', 'write_json': 'True', 'empty': 'False', 'warn_error': 'None', 'invocation_command': 'dbt run', 'version_check': 'True', 'printer_width': '80'}
+[0m15:31:40.087936 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path /home/victor_goveia/projects/open_financial_lakehouse/dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m15:31:40.088586 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 0.053868435, "process_in_blocks": "0", "process_kernel_time": 0.092081, "process_mem_max_rss": "102220", "process_out_blocks": "16", "process_user_time": 1.096602}
+[0m15:31:40.088954 [debug] [MainThread]: Command `dbt run` failed at 15:31:40.088855 after 0.05 seconds
+[0m15:31:40.089392 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7544bbe73d70>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7544c035f3b0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7544bc591550>]}
+[0m15:31:40.089714 [debug] [MainThread]: Flushing usage events
+[0m15:31:40.776870 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m15:36:17.962064 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7abf351ea1b0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7abf350bf8f0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7abf351ebbf0>]}
+
+
+============================== 15:36:17.964698 | d1da9484-9a0e-4884-862c-85fa043e77de ==============================
+[0m15:36:17.964698 [info ] [MainThread]: Running with dbt=1.11.7
+[0m15:36:17.965138 [debug] [MainThread]: running dbt with arguments {'partial_parse': 'True', 'no_print': 'None', 'write_json': 'True', 'profiles_dir': '/home/victor_goveia/.dbt', 'cache_selected_only': 'False', 'target_path': 'None', 'empty': 'False', 'quiet': 'False', 'version_check': 'True', 'send_anonymous_usage_stats': 'True', 'fail_fast': 'False', 'static_parser': 'True', 'indirect_selection': 'eager', 'log_path': 'logs', 'printer_width': '80', 'use_experimental_parser': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'invocation_command': 'dbt run', 'use_colors': 'True', 'debug': 'False', 'log_cache_events': 'False', 'introspect': 'True', 'log_format': 'default', 'warn_error': 'None'}
+[0m15:36:17.965523 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path /home/victor_goveia/projects/open_financial_lakehouse/dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m15:36:17.966222 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 0.053652056, "process_in_blocks": "0", "process_kernel_time": 0.116176, "process_mem_max_rss": "102380", "process_out_blocks": "8", "process_user_time": 1.311135}
+[0m15:36:17.966596 [debug] [MainThread]: Command `dbt run` failed at 15:36:17.966513 after 0.05 seconds
+[0m15:36:17.966887 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7abf3487e4e0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7abf3487fef0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7abf350bf8f0>]}
+[0m15:36:17.967196 [debug] [MainThread]: Flushing usage events
+[0m15:36:18.685431 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m19:18:07.111449 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7670561995b0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x76705800f8f0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x767059a2f980>]}
+
+
+============================== 19:18:07.115928 | 4d00e80d-c329-4784-a02f-185b4b78c109 ==============================
+[0m19:18:07.115928 [info ] [MainThread]: Running with dbt=1.11.7
+[0m19:18:07.116548 [debug] [MainThread]: running dbt with arguments {'log_cache_events': 'False', 'use_colors': 'True', 'log_format': 'default', 'log_path': 'logs', 'fail_fast': 'False', 'profiles_dir': '/home/victor_goveia/.dbt', 'invocation_command': 'dbt run', 'use_experimental_parser': 'False', 'partial_parse': 'True', 'write_json': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'empty': 'False', 'static_parser': 'True', 'version_check': 'True', 'introspect': 'True', 'quiet': 'False', 'debug': 'False', 'cache_selected_only': 'False', 'no_print': 'None', 'warn_error': 'None', 'target_path': 'None', 'indirect_selection': 'eager', 'printer_width': '80', 'send_anonymous_usage_stats': 'True'}
+[0m19:18:07.117048 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path /home/victor_goveia/projects/open_financial_lakehouse/dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m19:18:07.118498 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 0.059944883, "process_in_blocks": "48040", "process_kernel_time": 0.196472, "process_mem_max_rss": "102056", "process_out_blocks": "8", "process_user_time": 1.291103}
+[0m19:18:07.118908 [debug] [MainThread]: Command `dbt run` failed at 19:18:07.118820 after 0.06 seconds
+[0m19:18:07.119221 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7670568bdcd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x767055e27200>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x767055a03e00>]}
+[0m19:18:07.119543 [debug] [MainThread]: Flushing usage events
+[0m19:18:07.910469 [debug] [MainThread]: An error was encountered while trying to flush usage events

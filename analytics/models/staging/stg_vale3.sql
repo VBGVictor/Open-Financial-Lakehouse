@@ -1,1 +1,0 @@
-{{ generate_staging_query('VALE3') }}
