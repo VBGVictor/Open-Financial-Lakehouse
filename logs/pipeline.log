@@ -1,0 +1,155 @@
+🚀 INICIANDO PIPELINE PARA: VALE3
+----------------------------------------
+📦 Extraindo dados do yfinance...
+
+[*********************100%***********************]  1 of 1 completed
+
+[*********************100%***********************]  1 of 1 completed
+🔍 Capturando dados de ITSA4.SA...
+✅ Salvo em: /home/victor_goveia/projects/open_financial_lakehouse/data/bronze/stock_prices/ITSA4/ITSA4_20260429_1215.csv
+🔍 Capturando dados de VALE3.SA...
+📁 Nova pasta criada: /home/victor_goveia/projects/open_financial_lakehouse/data/bronze/stock_prices/VALE3
+✅ Salvo em: /home/victor_goveia/projects/open_financial_lakehouse/data/bronze/stock_prices/VALE3/VALE3_20260429_1215.csv
+
+🔥 Rodando Spark: Bronze to Delta...
+26/04/29 12:15:39 WARN Utils: Your hostname, NOTE-ETH-025 resolves to a loopback address: 127.0.1.1; using 10.255.255.254 instead (on interface lo)
+26/04/29 12:15:39 WARN Utils: Set SPARK_LOCAL_IP if you need to bind to another address
+:: loading settings :: url = jar:file:/home/victor_goveia/projects/open_financial_lakehouse/.venv_linux/lib/python3.12/site-packages/pyspark/jars/ivy-2.5.1.jar!/org/apache/ivy/core/settings/ivysettings.xml
+Ivy Default Cache set to: /home/victor_goveia/.ivy2/cache
+The jars for the packages stored in: /home/victor_goveia/.ivy2/jars
+io.delta#delta-core_2.12 added as a dependency
+:: resolving dependencies :: org.apache.spark#spark-submit-parent-a57e944d-c5e5-4bb3-b050-62b64ea1e88b;1.0
+	confs: [default]
+	found io.delta#delta-core_2.12;2.4.0 in central
+	found io.delta#delta-storage;2.4.0 in central
+	found org.antlr#antlr4-runtime;4.9.3 in central
+:: resolution report :: resolve 142ms :: artifacts dl 6ms
+	:: modules in use:
+	io.delta#delta-core_2.12;2.4.0 from central in [default]
+	io.delta#delta-storage;2.4.0 from central in [default]
+	org.antlr#antlr4-runtime;4.9.3 from central in [default]
+	---------------------------------------------------------------------
+	|                  |            modules            ||   artifacts   |
+	|       conf       | number| search|dwnlded|evicted|| number|dwnlded|
+	---------------------------------------------------------------------
+	|      default     |   3   |   0   |   0   |   0   ||   3   |   0   |
+	---------------------------------------------------------------------
+:: retrieving :: org.apache.spark#spark-submit-parent-a57e944d-c5e5-4bb3-b050-62b64ea1e88b
+	confs: [default]
+	0 artifacts copied, 3 already retrieved (0kB/4ms)
+26/04/29 12:15:49 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+
+[Stage 2:>                                                          (0 + 3) / 3]
+
+                                                                                
+26/04/29 12:15:57 WARN package: Truncated the string representation of a plan since it was too large. This behavior can be adjusted by setting 'spark.sql.debug.maxToStringFields'.
+
+[Stage 6:==========================>                             (24 + 12) / 50]
+
+[Stage 6:=================================================>       (43 + 7) / 50]
+
+                                                                                
+🚀 Iniciando processamento genérico...
+📂 Raiz do projeto detectada: /home/victor_goveia/projects/open_financial_lakehouse
+🔍 Buscando CSVs em: /home/victor_goveia/projects/open_financial_lakehouse/data/bronze/stock_prices/*/*.csv
+🧹 Limpando cache Delta em /home/victor_goveia/projects/open_financial_lakehouse/lakehouse_data/bronze/main_stock_prices...
+📦 Lendo arquivos CSV...
+🏷️ Extraindo o ticker do caminho do arquivo...
+🔄 Consolidando ativos e gravando em formato Delta...
+✅ Sucesso! Tabela única gravada em: /home/victor_goveia/projects/open_financial_lakehouse/lakehouse_data/bronze/main_stock_prices
++------+-----+
+|ticker|count|
++------+-----+
+| ITSA4| 1002|
+| VALE3|  501|
++------+-----+
+
+
+💎 Executando dbt: Camadas Silver e Gold...
+[0m15:16:01  Running with dbt=1.7.19
+[0m15:16:02  Registered adapter: spark=1.7.1
+[0m15:16:02  Found 2 models, 5 tests, 2 sources, 0 exposures, 0 metrics, 480 macros, 0 groups, 0 semantic models
+[0m15:16:02  
+26/04/29 12:16:03 WARN Utils: Your hostname, NOTE-ETH-025 resolves to a loopback address: 127.0.1.1; using 10.255.255.254 instead (on interface lo)
+26/04/29 12:16:03 WARN Utils: Set SPARK_LOCAL_IP if you need to bind to another address
+:: loading settings :: url = jar:file:/home/victor_goveia/projects/open_financial_lakehouse/.venv_linux/lib/python3.12/site-packages/pyspark/jars/ivy-2.5.1.jar!/org/apache/ivy/core/settings/ivysettings.xml
+Ivy Default Cache set to: /home/victor_goveia/.ivy2/cache
+The jars for the packages stored in: /home/victor_goveia/.ivy2/jars
+io.delta#delta-core_2.12 added as a dependency
+:: resolving dependencies :: org.apache.spark#spark-submit-parent-05d81dda-a2bf-43a4-a874-544cecb9d1d2;1.0
+	confs: [default]
+	found io.delta#delta-core_2.12;2.4.0 in central
+	found io.delta#delta-storage;2.4.0 in central
+	found org.antlr#antlr4-runtime;4.9.3 in central
+:: resolution report :: resolve 135ms :: artifacts dl 6ms
+	:: modules in use:
+	io.delta#delta-core_2.12;2.4.0 from central in [default]
+	io.delta#delta-storage;2.4.0 from central in [default]
+	org.antlr#antlr4-runtime;4.9.3 from central in [default]
+	---------------------------------------------------------------------
+	|                  |            modules            ||   artifacts   |
+	|       conf       | number| search|dwnlded|evicted|| number|dwnlded|
+	---------------------------------------------------------------------
+	|      default     |   3   |   0   |   0   |   0   ||   3   |   0   |
+	---------------------------------------------------------------------
+:: retrieving :: org.apache.spark#spark-submit-parent-05d81dda-a2bf-43a4-a874-544cecb9d1d2
+	confs: [default]
+	0 artifacts copied, 3 already retrieved (0kB/4ms)
+26/04/29 12:16:15 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+26/04/29 12:16:18 WARN HiveConf: HiveConf of name hive.stats.jdbc.timeout does not exist
+26/04/29 12:16:18 WARN HiveConf: HiveConf of name hive.stats.retries.wait does not exist
+26/04/29 12:16:20 WARN ObjectStore: Version information not found in metastore. hive.metastore.schema.verification is not enabled so recording the schema version 2.3.0
+26/04/29 12:16:20 WARN ObjectStore: setMetaStoreSchemaVersion called but recording version is disabled: version = 2.3.0, comment = Set by MetaStore victor_goveia@127.0.1.1
+26/04/29 12:16:20 WARN SparkSession: Using an existing Spark session; only runtime SQL configurations will take effect.
+26/04/29 12:16:20 WARN SparkSession: Using an existing Spark session; only runtime SQL configurations will take effect.
+26/04/29 12:16:20 WARN HiveConf: HiveConf of name hive.stats.jdbc.timeout does not exist
+26/04/29 12:16:20 WARN HiveConf: HiveConf of name hive.stats.retries.wait does not exist
+26/04/29 12:16:20 WARN ObjectStore: Failed to get database global_temp, returning NoSuchObjectException
+26/04/29 12:16:21 WARN SparkSession: Using an existing Spark session; only runtime SQL configurations will take effect.
+[0m15:16:21  Concurrency: 1 threads (target='dev')
+[0m15:16:21  
+[0m15:16:21  1 of 2 START sql table model gold_silver.stg_stocks ............................ [RUN]
+26/04/29 12:16:21 WARN SparkSession: Using an existing Spark session; only runtime SQL configurations will take effect.
+26/04/29 12:16:22 WARN SparkSession: Using an existing Spark session; only runtime SQL configurations will take effect.
+26/04/29 12:16:23 WARN HiveConf: HiveConf of name hive.stats.jdbc.timeout does not exist
+26/04/29 12:16:23 WARN HiveConf: HiveConf of name hive.stats.retries.wait does not exist
+26/04/29 12:16:23 WARN SparkSession: Using an existing Spark session; only runtime SQL configurations will take effect.
+26/04/29 12:16:23 WARN ResolveSessionCatalog: A Hive serde table will be created as there is no table provider specified. You can set spark.sql.legacy.createHiveTableByDefault to false so that native data source table will be created instead.
+26/04/29 12:16:23 WARN SessionState: METASTORE_FILTER_HOOK will be ignored, since hive.security.authorization.manager is set to instance of HiveAuthorizerFactory.
+26/04/29 12:16:23 WARN HiveConf: HiveConf of name hive.internal.ss.authz.settings.applied.marker does not exist
+26/04/29 12:16:23 WARN HiveConf: HiveConf of name hive.stats.jdbc.timeout does not exist
+26/04/29 12:16:23 WARN HiveConf: HiveConf of name hive.stats.retries.wait does not exist
+26/04/29 12:16:23 WARN HiveMetaStore: Location: file:/home/victor_goveia/projects/open_financial_lakehouse/analytics/lakehouse_data/warehouse/gold_silver.db/stg_stocks specified for non-external table:stg_stocks
+26/04/29 12:16:24 WARN package: Truncated the string representation of a plan since it was too large. This behavior can be adjusted by setting 'spark.sql.debug.maxToStringFields'.
+
+[Stage 3:=========>                                               (8 + 12) / 50]
+
+[Stage 3:=========================>                              (23 + 12) / 50]
+
+[Stage 3:==============================================>          (41 + 9) / 50]
+
+                                                                                
+[0m15:16:28  1 of 2 OK created sql table model gold_silver.stg_stocks ....................... [[32mOK[0m in 6.85s]
+[0m15:16:28  2 of 2 START sql table model gold_gold.fct_stock_performance ................... [RUN]
+26/04/29 12:16:28 WARN SparkSession: Using an existing Spark session; only runtime SQL configurations will take effect.
+
+[Stage 13:==================================================>     (45 + 5) / 50]
+
+                                                                                
+26/04/29 12:16:31 WARN OptimisticTransaction: [tableId=05ab3aea,txnId=ca075aed] Change in the table id detected in txn. Table id for txn on table at file:/home/victor_goveia/projects/open_financial_lakehouse/analytics/lakehouse_data/warehouse/gold_gold.db/fct_stock_performance was 05ab3aea-e9f1-4d69-ae03-e54c8c4e9862 when the txn was created and is now changed to 3fe634d6-fee5-43b0-9ee2-d2e812d54e65.
+26/04/29 12:16:31 WARN DeltaLog: Change in the table id detected while updating snapshot. 
+Previous snapshot = Snapshot(path=file:/home/victor_goveia/projects/open_financial_lakehouse/analytics/lakehouse_data/warehouse/gold_gold.db/fct_stock_performance/_delta_log, version=18, metadata=Metadata(05ab3aea-e9f1-4d69-ae03-e54c8c4e9862,null,null,Format(parquet,Map()),{"type":"struct","fields":[{"name":"ticker","type":"string","nullable":true,"metadata":{}},{"name":"data_referencia","type":"date","nullable":true,"metadata":{}},{"name":"preco_abertura","type":"double","nullable":true,"metadata":{}},{"name":"preco_maximo","type":"double","nullable":true,"metadata":{}},{"name":"preco_minimo","type":"double","nullable":true,"metadata":{}},{"name":"preco_fechamento","type":"double","nullable":true,"metadata":{}},{"name":"volume","type":"double","nullable":true,"metadata":{}},{"name":"variacao_diaria_pct","type":"double","nullable":true,"metadata":{}},{"name":"media_movel_7d","type":"double","nullable":true,"metadata":{}}]},List(),Map(),Some(1777475140915)), logSegment=LogSegment(file:/home/victor_goveia/projects/open_financial_lakehouse/analytics/lakehouse_data/warehouse/gold_gold.db/fct_stock_performance/_delta_log,18,WrappedArray(DeprecatedRawLocalFileStatus{path=file:/home/victor_goveia/projects/open_financial_lakehouse/analytics/lakehouse_data/warehouse/gold_gold.db/fct_stock_performance/_delta_log/00000000000000000011.json; isDirectory=false; length=2649; replication=1; blocksize=33554432; modification_time=1777470485953; access_time=1777470486138; owner=; group=; permission=rw-rw-rw-; isSymlink=false; hasAcl=false; isEncrypted=false; isErasureCoded=false}, DeprecatedRawLocalFileStatus{path=file:/home/victor_goveia/projects/open_financial_lakehouse/analytics/lakehouse_data/warehouse/gold_gold.db/fct_stock_performance/_delta_log/00000000000000000012.json; isDirectory=false; length=2651; replication=1; blocksize=33554432; modification_time=1777471415560; access_time=1777471415732; owner=; group=; permission=rw-rw-rw-; isSymlink=false; hasAcl=false; isEncrypted=false; isErasureCoded=false}, DeprecatedRawLocalFileStatus{path=file:/home/victor_goveia/projects/open_financial_lakehouse/analytics/lakehouse_data/warehouse/gold_gold.db/fct_stock_performance/_delta_log/00000000000000000013.json; isDirectory=false; length=2652; replication=1; blocksize=33554432; modification_time=1777471769659; access_time=1777471769823; owner=; group=; permission=rw-rw-rw-; isSymlink=false; hasAcl=false; isEncrypted=false; isErasureCoded=false}, DeprecatedRawLocalFileStatus{path=file:/home/victor_goveia/projects/open_financial_lakehouse/analytics/lakehouse_data/warehouse/gold_gold.db/fct_stock_performance/_delta_log/00000000000000000014.json; isDirectory=false; length=2651; replication=1; blocksize=33554432; modification_time=1777472721728; access_time=1777472722118; owner=; group=; permission=rw-rw-rw-; isSymlink=false; hasAcl=false; isEncrypted=false; isErasureCoded=false}, DeprecatedRawLocalFileStatus{path=file:/home/victor_goveia/projects/open_financial_lakehouse/analytics/lakehouse_data/warehouse/gold_gold.db/fct_stock_performance/_delta_log/00000000000000000015.json; isDirectory=false; length=2648; replication=1; blocksize=33554432; modification_time=1777473625536; access_time=1777473625726; owner=; group=; permission=rw-rw-rw-; isSymlink=false; hasAcl=false; isEncrypted=false; isErasureCoded=false}, DeprecatedRawLocalFileStatus{path=file:/home/victor_goveia/projects/open_financial_lakehouse/analytics/lakehouse_data/warehouse/gold_gold.db/fct_stock_performance/_delta_log/00000000000000000016.json; isDirectory=false; length=2651; replication=1; blocksize=33554432; modification_time=1777474342494; access_time=1777474342641; owner=; group=; permission=rw-rw-rw-; isSymlink=false; hasAcl=false; isEncrypted=false; isErasureCoded=false}, DeprecatedRawLocalFileStatus{path=file:/home/victor_goveia/projects/open_financial_lakehouse/analytics/lakehouse_data/warehouse/gold_gold.db/fct_stock_performance/_delta_log/00000000000000000017.json; isDirectory=false; length=2649; replication=1; blocksize=33554432; modification_time=1777475075226; access_time=1777475075398; owner=; group=; permission=rw-rw-rw-; isSymlink=false; hasAcl=false; isEncrypted=false; isErasureCoded=false}, DeprecatedRawLocalFileStatus{path=file:/home/victor_goveia/projects/open_financial_lakehouse/analytics/lakehouse_data/warehouse/gold_gold.db/fct_stock_performance/_delta_log/00000000000000000018.json; isDirectory=false; length=2648; replication=1; blocksize=33554432; modification_time=1777475143567; access_time=1777475143741; owner=; group=; permission=rw-rw-rw-; isSymlink=false; hasAcl=false; isEncrypted=false; isErasureCoded=false}),Some(PreloadedCheckpointProvider(WrappedArray(DeprecatedRawLocalFileStatus{path=file:/home/victor_goveia/projects/open_financial_lakehouse/analytics/lakehouse_data/warehouse/gold_gold.db/fct_stock_performance/_delta_log/00000000000000000010.checkpoint.parquet; isDirectory=false; length=20878; replication=1; blocksize=33554432; modification_time=1777467117294; access_time=1777467118511; owner=; group=; permission=rw-rw-rw-; isSymlink=false; hasAcl=false; isEncrypted=false; isErasureCoded=false}),Some(CheckpointMetaData(10,13,None,Some(20878),Some(1),Some(StructType(StructField(txn,StructType(StructField(appId,StringType,true),StructField(version,LongType,true),StructField(lastUpdated,LongType,true)),true),StructField(add,StructType(StructField(path,StringType,true),StructField(partitionValues,MapType(StringType,StringType,true),true),StructField(size,LongType,true),StructField(modificationTime,LongType,true),StructField(dataChange,BooleanType,true),StructField(tags,MapType(StringType,StringType,true),true),StructField(deletionVector,StructType(StructField(storageType,StringType,true),StructField(pathOrInlineDv,StringType,true),StructField(offset,IntegerType,true),StructField(sizeInBytes,IntegerType,true),StructField(cardinality,LongType,true),StructField(maxRowIndex,LongType,true)),true),StructField(stats,StringType,true)),true),StructField(remove,StructType(StructField(path,StringType,true),StructField(deletionTimestamp,LongType,true),StructField(dataChange,BooleanType,true),StructField(extendedFileMetadata,BooleanType,true),StructField(partitionValues,MapType(StringType,StringType,true),true),StructField(size,LongType,true),StructField(deletionVector,StructType(StructField(storageType,StringType,true),StructField(pathOrInlineDv,StringType,true),StructField(offset,IntegerType,true),StructField(sizeInBytes,IntegerType,true),StructField(cardinality,LongType,true),StructField(maxRowIndex,LongType,true)),true)),true),StructField(metaData,StructType(StructField(id,StringType,true),StructField(name,StringType,true),StructField(description,StringType,true),StructField(format,StructType(StructField(provider,StringType,true),StructField(options,MapType(StringType,StringType,true),true)),true),StructField(schemaString,StringType,true),StructField(partitionColumns,ArrayType(StringType,true),true),StructField(configuration,MapType(StringType,StringType,true),true),StructField(createdTime,LongType,true)),true),StructField(protocol,StructType(StructField(minReaderVersion,IntegerType,true),StructField(minWriterVersion,IntegerType,true),StructField(readerFeatures,ArrayType(StringType,true),true),StructField(writerFeatures,ArrayType(StringType,true),true)),true))),Some(5addd107afb26bd9c96c4871be759d19))))),1777475143567), checksumOpt=None)
+New snapshot = Snapshot(path=file:/home/victor_goveia/projects/open_financial_lakehouse/analytics/lakehouse_data/warehouse/gold_gold.db/fct_stock_performance/_delta_log, version=19, metadata=Metadata(3fe634d6-fee5-43b0-9ee2-d2e812d54e65,null,null,Format(parquet,Map()),{"type":"struct","fields":[{"name":"ticker","type":"string","nullable":true,"metadata":{}},{"name":"data_referencia","type":"date","nullable":true,"metadata":{}},{"name":"preco_abertura","type":"double","nullable":true,"metadata":{}},{"name":"preco_maximo","type":"double","nullable":true,"metadata":{}},{"name":"preco_minimo","type":"double","nullable":true,"metadata":{}},{"name":"preco_fechamento","type":"double","nullable":true,"metadata":{}},{"name":"volume","type":"double","nullable":true,"metadata":{}},{"name":"variacao_diaria_pct","type":"double","nullable":true,"metadata":{}},{"name":"media_movel_7d","type":"double","nullable":true,"metadata":{}}]},List(),Map(),Some(1777475788689)), logSegment=LogSegment(file:/home/victor_goveia/projects/open_financial_lakehouse/analytics/lakehouse_data/warehouse/gold_gold.db/fct_stock_performance/_delta_log,19,WrappedArray(DeprecatedRawLocalFileStatus{path=file:/home/victor_goveia/projects/open_financial_lakehouse/analytics/lakehouse_data/warehouse/gold_gold.db/fct_stock_performance/_delta_log/00000000000000000011.json; isDirectory=false; length=2649; replication=1; blocksize=33554432; modification_time=1777470485953; access_time=1777470486138; owner=; group=; permission=rw-rw-rw-; isSymlink=false; hasAcl=false; isEncrypted=false; isErasureCoded=false}, DeprecatedRawLocalFileStatus{path=file:/home/victor_goveia/projects/open_financial_lakehouse/analytics/lakehouse_data/warehouse/gold_gold.db/fct_stock_performance/_delta_log/00000000000000000012.json; isDirectory=false; length=2651; replication=1; blocksize=33554432; modification_time=1777471415560; access_time=1777471415732; owner=; group=; permission=rw-rw-rw-; isSymlink=false; hasAcl=false; isEncrypted=false; isErasureCoded=false}, DeprecatedRawLocalFileStatus{path=file:/home/victor_goveia/projects/open_financial_lakehouse/analytics/lakehouse_data/warehouse/gold_gold.db/fct_stock_performance/_delta_log/00000000000000000013.json; isDirectory=false; length=2652; replication=1; blocksize=33554432; modification_time=1777471769659; access_time=1777471769823; owner=; group=; permission=rw-rw-rw-; isSymlink=false; hasAcl=false; isEncrypted=false; isErasureCoded=false}, DeprecatedRawLocalFileStatus{path=file:/home/victor_goveia/projects/open_financial_lakehouse/analytics/lakehouse_data/warehouse/gold_gold.db/fct_stock_performance/_delta_log/00000000000000000014.json; isDirectory=false; length=2651; replication=1; blocksize=33554432; modification_time=1777472721728; access_time=1777472722118; owner=; group=; permission=rw-rw-rw-; isSymlink=false; hasAcl=false; isEncrypted=false; isErasureCoded=false}, DeprecatedRawLocalFileStatus{path=file:/home/victor_goveia/projects/open_financial_lakehouse/analytics/lakehouse_data/warehouse/gold_gold.db/fct_stock_performance/_delta_log/00000000000000000015.json; isDirectory=false; length=2648; replication=1; blocksize=33554432; modification_time=1777473625536; access_time=1777473625726; owner=; group=; permission=rw-rw-rw-; isSymlink=false; hasAcl=false; isEncrypted=false; isErasureCoded=false}, DeprecatedRawLocalFileStatus{path=file:/home/victor_goveia/projects/open_financial_lakehouse/analytics/lakehouse_data/warehouse/gold_gold.db/fct_stock_performance/_delta_log/00000000000000000016.json; isDirectory=false; length=2651; replication=1; blocksize=33554432; modification_time=1777474342494; access_time=1777474342641; owner=; group=; permission=rw-rw-rw-; isSymlink=false; hasAcl=false; isEncrypted=false; isErasureCoded=false}, DeprecatedRawLocalFileStatus{path=file:/home/victor_goveia/projects/open_financial_lakehouse/analytics/lakehouse_data/warehouse/gold_gold.db/fct_stock_performance/_delta_log/00000000000000000017.json; isDirectory=false; length=2649; replication=1; blocksize=33554432; modification_time=1777475075226; access_time=1777475075398; owner=; group=; permission=rw-rw-rw-; isSymlink=false; hasAcl=false; isEncrypted=false; isErasureCoded=false}, DeprecatedRawLocalFileStatus{path=file:/home/victor_goveia/projects/open_financial_lakehouse/analytics/lakehouse_data/warehouse/gold_gold.db/fct_stock_performance/_delta_log/00000000000000000018.json; isDirectory=false; length=2648; replication=1; blocksize=33554432; modification_time=1777475143567; access_time=1777475143741; owner=; group=; permission=rw-rw-rw-; isSymlink=false; hasAcl=false; isEncrypted=false; isErasureCoded=false}, DeprecatedRawLocalFileStatus{path=file:/home/victor_goveia/projects/open_financial_lakehouse/analytics/lakehouse_data/warehouse/gold_gold.db/fct_stock_performance/_delta_log/00000000000000000019.json; isDirectory=false; length=2648; replication=1; blocksize=33554432; modification_time=1777475791116; access_time=1777475791109; owner=; group=; permission=rw-rw-rw-; isSymlink=false; hasAcl=false; isEncrypted=false; isErasureCoded=false}),Some(PreloadedCheckpointProvider(WrappedArray(DeprecatedRawLocalFileStatus{path=file:/home/victor_goveia/projects/open_financial_lakehouse/analytics/lakehouse_data/warehouse/gold_gold.db/fct_stock_performance/_delta_log/00000000000000000010.checkpoint.parquet; isDirectory=false; length=20878; replication=1; blocksize=33554432; modification_time=1777467117294; access_time=1777467118511; owner=; group=; permission=rw-rw-rw-; isSymlink=false; hasAcl=false; isEncrypted=false; isErasureCoded=false}),Some(CheckpointMetaData(10,13,None,Some(20878),Some(1),Some(StructType(StructField(txn,StructType(StructField(appId,StringType,true),StructField(version,LongType,true),StructField(lastUpdated,LongType,true)),true),StructField(add,StructType(StructField(path,StringType,true),StructField(partitionValues,MapType(StringType,StringType,true),true),StructField(size,LongType,true),StructField(modificationTime,LongType,true),StructField(dataChange,BooleanType,true),StructField(tags,MapType(StringType,StringType,true),true),StructField(deletionVector,StructType(StructField(storageType,StringType,true),StructField(pathOrInlineDv,StringType,true),StructField(offset,IntegerType,true),StructField(sizeInBytes,IntegerType,true),StructField(cardinality,LongType,true),StructField(maxRowIndex,LongType,true)),true),StructField(stats,StringType,true)),true),StructField(remove,StructType(StructField(path,StringType,true),StructField(deletionTimestamp,LongType,true),StructField(dataChange,BooleanType,true),StructField(extendedFileMetadata,BooleanType,true),StructField(partitionValues,MapType(StringType,StringType,true),true),StructField(size,LongType,true),StructField(deletionVector,StructType(StructField(storageType,StringType,true),StructField(pathOrInlineDv,StringType,true),StructField(offset,IntegerType,true),StructField(sizeInBytes,IntegerType,true),StructField(cardinality,LongType,true),StructField(maxRowIndex,LongType,true)),true)),true),StructField(metaData,StructType(StructField(id,StringType,true),StructField(name,StringType,true),StructField(description,StringType,true),StructField(format,StructType(StructField(provider,StringType,true),StructField(options,MapType(StringType,StringType,true),true)),true),StructField(schemaString,StringType,true),StructField(partitionColumns,ArrayType(StringType,true),true),StructField(configuration,MapType(StringType,StringType,true),true),StructField(createdTime,LongType,true)),true),StructField(protocol,StructType(StructField(minReaderVersion,IntegerType,true),StructField(minWriterVersion,IntegerType,true),StructField(readerFeatures,ArrayType(StringType,true),true),StructField(writerFeatures,ArrayType(StringType,true),true)),true))),Some(5addd107afb26bd9c96c4871be759d19))))),1777475791116), checksumOpt=None).
+[0m15:16:32  2 of 2 OK created sql table model gold_gold.fct_stock_performance .............. [[32mOK[0m in 4.11s]
+[0m15:16:32  
+[0m15:16:32  Finished running 2 table models in 0 hours 0 minutes and 30.10 seconds (30.10s).
+[0m15:16:32  
+[0m15:16:32  [32mCompleted successfully[0m
+[0m15:16:32  
+[0m15:16:32  Done. PASS=2 WARN=0 ERROR=0 SKIP=0 TOTAL=2
+
+✅ SUCESSO: VALE3 disponível no Lakehouse!

@@ -74,16 +74,61 @@ def get_market_status():
     df_latest = df[df['data_referencia'] == latest_date]
     return df_latest.to_dict(orient="records")
 
+
 @app.post("/ingest/{ticker}")
 async def run_ingestion(ticker: str):
-    # Aqui você preenche com a sua lógica de subprocess que já funcionava
+    LOG_FILE = os.path.join(BASE_DIR, "logs", "pipeline.log")
+    os.makedirs(os.path.dirname(LOG_FILE), exist_ok=True)
+
+    # Função auxiliar para ler o terminal linha por linha
+    def execute_realtime(command, file_handle, cwd=None):
+        process = subprocess.Popen(
+            command,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            text=True,
+            cwd=cwd
+        )
+        # O SEGREDO: Iterar sobre o stdout enquanto o processo roda
+        for line in process.stdout:
+            file_handle.write(line)
+            file_handle.flush()  # Empurra a linha para o arquivo na hora!
+        
+        process.wait()
+        if process.returncode != 0:
+            raise subprocess.CalledProcessError(process.returncode, command)
+
     try:
-        subprocess.run([PYTHON_EXEC, INGESTION_SCRIPT, ticker], check=True)
-        subprocess.run([PYTHON_EXEC, BRONZE_SCRIPT], check=True)
-        subprocess.run([DBT_EXEC, "run"], cwd=ANALYTICS_DIR, check=True)
+        with open(LOG_FILE, "w", encoding="utf-8") as f:
+            f.write(f"🚀 INICIANDO PIPELINE PARA: {ticker}\n")
+            f.write("-" * 40 + "\n")
+            f.flush()
+
+            # 1. Ingestão
+            f.write("📦 Extraindo dados do yfinance...\n")
+            f.flush()
+            execute_realtime([PYTHON_EXEC, INGESTION_SCRIPT, ticker], f)
+
+            # 2. Bronze to Delta
+            f.write("\n🔥 Rodando Spark: Bronze to Delta...\n")
+            f.flush()
+            execute_realtime([PYTHON_EXEC, BRONZE_SCRIPT], f)
+
+            # 3. dbt Gold
+            f.write("\n💎 Executando dbt: Camadas Silver e Gold...\n")
+            f.flush()
+            execute_realtime([DBT_EXEC, "run"], f, cwd=ANALYTICS_DIR)
+
+            f.write(f"\n✅ SUCESSO: {ticker} disponível no Lakehouse!")
+            f.flush()
+
         return {"status": "success", "message": f"Ativo {ticker} processado!"}
+    
     except Exception as e:
+        with open(LOG_FILE, "a", encoding="utf-8") as f:
+            f.write(f"\n❌ ERRO NO PIPELINE: {str(e)}\n")
         return {"status": "error", "message": str(e)}
+
 
 @app.get("/history/{ticker}")
 def get_ticker_history(ticker: str):
@@ -93,6 +138,25 @@ def get_ticker_history(ticker: str):
     clean_ticker = ticker.upper().replace(".SA", "")
     df_filtered = df[df['ticker'] == clean_ticker].sort_values("data_referencia")
     return df_filtered.to_dict(orient="records")
+
+@app.get("/logs")
+async def get_logs():
+    LOG_FILE = os.path.join(BASE_DIR, "logs", "pipeline.log")
+    
+    try:
+        if not os.path.exists(LOG_FILE):
+            # Se o arquivo não existe, criamos um diretório e um arquivo vazio
+            os.makedirs(os.path.dirname(LOG_FILE), exist_ok=True)
+            with open(LOG_FILE, "w") as f:
+                f.write("--- Monitoramento Iniciado ---\n")
+            return {"logs": ["Aguardando logs..."]}
+
+        # Adicione o encoding="utf-8" na abertura do arquivo
+        with open(LOG_FILE, "r", encoding="utf-8") as f:
+            lines = f.readlines()
+            return {"logs": [line.strip() for line in lines[-30:]]} 
+    except Exception as e:
+        return {"logs": [f"Erro ao ler logs: {str(e)}"]}
 
 # --- 5. SERVIR O FRONTEND (SÓ AGORA O MOUNT!) ---
 
