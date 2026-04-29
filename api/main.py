@@ -11,15 +11,30 @@ from fastapi.staticfiles import StaticFiles
 app = FastAPI(title="Open Financial Lakehouse API")
 
 # --- 1. DEFINIÇÃO DINÂMICA DE DIRETÓRIOS ---
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# --- 1. DEFINIÇÃO DINÂMICA DE DIRETÓRIOS ---
+# Pega a pasta onde o main.py está (api/) e sobe 1 nível para a raiz do projeto
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR = os.path.dirname(CURRENT_DIR)
+
+# Mapeamento para chegar na Gold que o seu terminal confirmou
+# Caminho: raiz/analytics/lakehouse_data/warehouse/gold_gold.db/fct_stock_performance
+GOLD_PATH = os.path.join(
+    BASE_DIR, 
+    "analytics", 
+    "lakehouse_data", 
+    "warehouse", 
+    "gold_gold.db", 
+    "fct_stock_performance"
+)
+
 ANALYTICS_DIR = os.path.join(BASE_DIR, "analytics")
 FRONTEND_PATH = os.path.join(BASE_DIR, "frontend")
 
-# Caminho exato onde o Spark + dbt salvaram a tabela Gold
-GOLD_PATH = os.path.join(
-    ANALYTICS_DIR, 
-    "lakehouse_data/warehouse/gold_gold.db/fct_stock_performance"
-)
+# Debug para validação interna (sem caminhos fixos no código)
+if not os.path.exists(GOLD_PATH):
+    print(f"⚠️ Alerta: Tabela Gold não encontrada no mapeamento dinâmico.")
+else:
+    print(f"✅ Conexão dinâmica estabelecida com a Gold.")
 
 # Scripts e Binários
 PYTHON_EXEC = "python" 

@@ -1,4 +1,5 @@
 import os
+import shutil
 from pathlib import Path
 from pyspark.sql import SparkSession
 from delta import *
@@ -16,8 +17,13 @@ print(f"🚀 Iniciando processamento genérico...")
 print(f"📂 Raiz do projeto detectada: {project_root}")
 print(f"🔍 Buscando CSVs em: {csv_path}")
 
-# --- 2. INICIALIZAÇÃO DO SPARK ---
-# Aqui ligamos o motor do Lakehouse
+# --- 2. LIMPEZA PREVENTIVA ---
+# Fazemos isso antes de abrir o Spark para garantir que a pasta esteja livre
+if os.path.exists(delta_path):
+    print(f"🧹 Limpando cache Delta em {delta_path}...")
+    shutil.rmtree(delta_path)
+
+# --- 3. INICIALIZAÇÃO DO SPARK ---
 builder = SparkSession.builder.appName("BronzeToDelta") \
     .config("spark.sql.extensions", "io.delta.sql.DeltaSparkSessionExtension") \
     .config("spark.sql.catalog.spark_catalog", "org.apache.spark.sql.delta.catalog.DeltaCatalog") \
@@ -25,16 +31,17 @@ builder = SparkSession.builder.appName("BronzeToDelta") \
 
 spark = configure_spark_with_delta_pip(builder).getOrCreate()
 
-# --- 3. PROCESSAMENTO DOS DADOS ---
+# --- 4. PROCESSAMENTO DOS DADOS ---
 try:
     print("📦 Lendo arquivos CSV...")
+    # Usamos o caminho absoluto com file:// para evitar confusões de diretório
     df_raw = spark.read.csv(f"file://{csv_path}", header=True, inferSchema=True)
 
     print("🏷️ Extraindo o ticker do caminho do arquivo...")
-    # Agora o Spark saberá o que é regexp_extract e input_file_name
     df_with_ticker = df_raw.withColumn("ticker", regexp_extract(input_file_name(), r"stock_prices/([^/]+)/", 1))
 
     print("🔄 Consolidando ativos e gravando em formato Delta...")
+    # Agora sim o df_with_ticker já existe e pode ser gravado
     df_with_ticker.write.format("delta") \
       .mode("overwrite") \
       .partitionBy("ticker") \
